@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"crossorigin="anonymous">
+    <title>Sign-up form</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=KoHo:wght@200&display=swap" rel="stylesheet">
+    <link rel = "icon" href ="https://img.icons8.com/external-bearicons-glyph-bearicons/100/000000/external-sign-up-call-to-action-bearicons-glyph-bearicons-1.png"/>">
+</head>
+<style>
+    form{
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        font-size: larger;
+        color:white;
+    }
+    p{
+        text-align: center;
+        font-size: 40px;
+        color:skyblue;
+    }
+    label{
+        margin-top: 20px;
+        font-size: larger;
+        width: 70%;
+        font-weight: 50px;
+    }
+    input{
+        outline: none;
+        border: transparent;
+        border-radius: 10px;
+        border-width: 50%;
+    }
+    .cont{
+        margin-bottom: 10px;
+    }
+    .btn{
+        margin-top: 30px;
+        color: white;
+        font-size: larger;
+        background-color:slategray;
+    }
+</style>
+<body style="background-image: url('https://papers.co/wallpaper/papers.co-vn96-circle-hole-dark-bw-abstract-pattern-35-3840x2160-4k-wallpaper.jpg');
+background-repeat:no-repeat;background-size: cover;background-attachment: fixed;width: 100%;height: auto;padding-right:40px;padding-bottom:40px;padding-left: 40px;
+font-family:sans-serif">
+<p>
+    WELCOME TO SPEEDFORCES <br>
+</p>
+<form name="signupform" onsubmit="sign()">
+    <div class="cont">
+        <label for="name">Name :</label><br>
+        <input name="name" class="name" placeholder=" Enter Your Name" type="text" size="40"><br>
+    </div>
+    <div class="cont">
+        <label for="email">Email :</label><br>
+        <input name="email" class="email" placeholder=" Enter Valid Email Address" type="email" size="40" ><br>
+    </div>  
+    <div class="cont">
+        <label for="password">Password :</label><br>
+        <input name="password" class="password" placeholder=" Length Should Be Greater Than 7" type="password" size="40" ><br>
+    </div>
+    <div class="onsubmit">
+
+    </div>
+    <button class="btn">Signup</button>
+</form> 
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    //button function
+    let btn=document.querySelector('.btn');
+    btn.addEventListener('click',async function(evt){
+        // evt.preventDefault();
+        let email=document.querySelector('.email').value;
+        let name=document.querySelector('.name').value;
+        let password=document.querySelector('.password').value;
+        let resp=await axios.post('/auth/signup',{email,name,password});
+        console.log(resp);
+    });
+    //submit click message 
+    function sign(){
+        let validn=document.forms["signupform"].value;
+        let valide=document.forms["signupform"]["email"].value;
+        let validp=document.forms["signupform"]["password"].value;
+        if(valide=="" || validn=="" || validp==""){
+            alert('please input values');
+        }
+        else
+            alert('Successfully Signed Up');
+    }
+</script>
+</body>
+</html>
