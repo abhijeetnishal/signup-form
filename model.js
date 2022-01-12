@@ -1,6 +1,6 @@
 //database connection
 const mongoose=require('mongoose');
-const dblink='mongodb+srv://admin:yhiawDzoR6q517G6@cluster0.y8iyi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const dblink='mongodb+srv://admin:yourpassword@cluster0.y8iyi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 mongoose.connect(dblink)
 .then(function(db){
     console.log("database connnected");
